@@ -8,74 +8,75 @@
 </head>
 
 <body>
+<script>
+
+    let playerWin = 0;
+    let computerWin = 0;  
+
+    //random play from pc
+    function computerPlay() {
+        let play = Math.floor(Math.random() * 3); //random between 0 and 2
+
+        if (play === 0) {
+            return "rock";
+        }
+        else if (play === 1) {
+            return "paper";
+        }
+        else {
+            return "scissors";
+        }
+    }
+
+    //we decide the outcome here
+    function playerRound(playerSelection, computerSelection) {
+        let playerPick = playerSelection.toUpperCase();
+        let computerPick = computerPlay().toUpperCase();
+
+        //verifying winning/losing options
+        if ((playerPick == "ROCK" && computerPick == "SCISSORS") ||
+            (playerPick == "PAPER" && computerPick == "ROCK") ||
+            (playerPick == "SCISSORS" && computerPick == "PAPER")) {
+
+            playerWin++;
+            showScore();
+            return `You win! ${playerPick} beats ${computerPick}`;
+        }
+        else if ((playerPick == "ROCK" && computerPick == "PAPER") ||
+            (playerPick == "PAPER" && computerPick == "SCISSORS") ||
+            (playerPick == "SCISSORS" && computerPick == "ROCK")) {
+
+            computerWin++;
+            showScore();
+            return `You lost! ${computerPick} beats ${playerPick}`;
+        }
+        else {
+            return `It's a draw between ${playerPick} and ${computerPick}`;
+            showScore();
+        }
+    }
+
+    //to play a 5 game round
+    function game() {
+        return (playerWin == 3) ? "You won!" 
+                : (computerWin == 3) ? "Computer wins" 
+                : "It's a draw";
+    }
+
+    function showScore() {
+        console.log(`Actual Score: \n player: ${playerWin} vs computer: ${computerWin}`);
+    }
+
+    for (let i = 0; i < 5; i++) {
+        console.log(`Round ${i + 1}`);
+        let userPick = prompt("Pick your choice! Rock, Paper or Scissors!");
+        console.log(playerRound(userPick, computerPlay()));
+    }
     
-    <script>
-
-        //random play from pc
-        function computerPlay() {
-            let play = Math.floor(Math.random() * 3); //random between 0 and 2
-
-            if (play === 0) {
-                return "rock";
-            }
-            else if (play === 1) {
-                return "paper";
-            }
-            else {
-                return "scissors";
-            }
-        }
-
-        //we decide the outcome here
-        function playerRound(playerSelection, computerSelection) {
-            let playerPick = playerSelection.toUpperCase();
-            let computerPick = computerSelection.toUpperCase();
-
-            //starting to check 
-            if (playerPick === "ROCK") {
-                if (computerPick === "PAPER") {
-                    return "You lose! Paper beats Rock!";
-                }
-                else if (computerPick === "SCISSORS") {
-                    return "You win! Rock beats Scissors!";
-                } else {
-                    return "It's a draw!";
-                }
-            }
-            else if (playerPick === "PAPER") {
-                if (computerPick === "ROCK") {
-                    return "You win! Paper beats Rock!";
-                }
-                else if (computerPick === "SCISSORS") {
-                    return "You lose! Scissors beat Paper!";
-                } else {
-                    return "It's a draw!";
-                }
-            }
-            else if (playerPick === "SCISSORS") {
-                if (computerPick === "PAPER") {
-                    return "You win! Scissor beat Paper!";
-                }
-                else if (computerPick === "ROCK") {
-                    return "You lose! Rock beats Scissors!";
-                }
-                else {
-                    return "It's a draw!";
-                }
-            }
-        }
+    game();
 
 
-        const playerSelection = "rock";
-        const computerSelection = computerPlay();
-        console.log(playerRound(playerSelection, computerSelection));
-
-        //to play a 5 game round
-        function game() {
-
-        }
-
-    </script>
+</script>
 
 </body>
 
