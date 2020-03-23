@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Rock Paper Scissors</title>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+</head>
+
+<body>
+    
+    <script>
+
+        //random play from pc
+        function computerPlay() {
+            let play = Math.floor(Math.random() * 3); //random between 0 and 2
+
+            if (play === 0) {
+                return "rock";
+            }
+            else if (play === 1) {
+                return "paper";
+            }
+            else {
+                return "scissors";
+            }
+        }
+
+        //we decide the outcome here
+        function playerRound(playerSelection, computerSelection) {
+            let playerPick = playerSelection.toUpperCase();
+            let computerPick = computerSelection.toUpperCase();
+
+            //starting to check 
+            if (playerPick === "ROCK") {
+                if (computerPick === "PAPER") {
+                    return "You lose! Paper beats Rock!";
+                }
+                else if (computerPick === "SCISSORS") {
+                    return "You win! Rock beats Scissors!";
+                } else {
+                    return "It's a draw!";
+                }
+            }
+            else if (playerPick === "PAPER") {
+                if (computerPick === "ROCK") {
+                    return "You win! Paper beats Rock!";
+                }
+                else if (computerPick === "SCISSORS") {
+                    return "You lose! Scissors beat Paper!";
+                } else {
+                    return "It's a draw!";
+                }
+            }
+            else if (playerPick === "SCISSORS") {
+                if (computerPick === "PAPER") {
+                    return "You win! Scissor beat Paper!";
+                }
+                else if (computerPick === "ROCK") {
+                    return "You lose! Rock beats Scissors!";
+                }
+                else {
+                    return "It's a draw!";
+                }
+            }
+        }
+
+
+        const playerSelection = "rock";
+        const computerSelection = computerPlay();
+        console.log(playerRound(playerSelection, computerSelection));
+
+        //to play a 5 game round
+        function game() {
+
+        }
+
+    </script>
+
+</body>
+
+</html>
