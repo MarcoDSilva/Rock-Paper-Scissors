@@ -1,0 +1,31 @@
+#container {
+   margin: 0;
+   padding:0;
+   text-align: center;
+}
+
+.playerOptions, .cpuOptions {
+    height:50vh;
+    display:flex;
+    align-items: center;
+    align-content: space-around;
+}
+
+.options {
+    margin:0 auto;
+    width:300px;
+    height:300px;
+    display:flex;
+    align-items: inherit;  
+}
+
+.img {
+    width: 200px;
+    height: 200px;
+}
+
+button {
+    border:1px solid pink;
+    background:paleturquoise;
+    border-radius: 10px;
+}

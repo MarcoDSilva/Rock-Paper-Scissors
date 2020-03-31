@@ -5,79 +5,35 @@
     <title>Rock Paper Scissors</title>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="utf-8" http-equiv="encoding">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-<script>
 
-    let playerWin = 0;
-    let computerWin = 0;  
+<div id="container">
+    <h2>Welcome to rock-paper-scissors!</h2>
 
-    //random play from pc
-    function computerPlay() {
-        let play = Math.floor(Math.random() * 3); //random between 0 and 2
+    <div class="playerOptions">
+        <div class="options">
+            <img src="img/rock.png" alt="rock image" class="img">
+            <button class="btn" id="rock" value="rock">Rock</button>
+        </div>
+        <div class="options">
+            <img src="img/paper.png" alt="paper image" class="img">
+            <button class="btn" id="paper" value="paper">paper</button>
+        </div>
+        <div class="options">
+            <img src="img/scissor.png" alt="scissor image" class="img">
+            <button class="btn" id="scissors" value="scissors">scissor</button>
+        </div>
+    </div>
+    <div class="cpuOptions">
+       
+    </div>
 
-        if (play === 0) {
-            return "rock";
-        }
-        else if (play === 1) {
-            return "paper";
-        }
-        else {
-            return "scissors";
-        }
-    }
-
-    //we decide the outcome here
-    function playerRound(playerSelection, computerSelection) {
-        let playerPick = playerSelection.toUpperCase();
-        let computerPick = computerPlay().toUpperCase();
-
-        //verifying winning/losing options
-        if ((playerPick == "ROCK" && computerPick == "SCISSORS") ||
-            (playerPick == "PAPER" && computerPick == "ROCK") ||
-            (playerPick == "SCISSORS" && computerPick == "PAPER")) {
-
-            playerWin++;
-            showScore();
-            return `You win! ${playerPick} beats ${computerPick}`;
-        }
-        else if ((playerPick == "ROCK" && computerPick == "PAPER") ||
-            (playerPick == "PAPER" && computerPick == "SCISSORS") ||
-            (playerPick == "SCISSORS" && computerPick == "ROCK")) {
-
-            computerWin++;
-            showScore();
-            return `You lost! ${computerPick} beats ${playerPick}`;
-        }
-        else {
-            return `It's a draw between ${playerPick} and ${computerPick}`;
-            showScore();
-        }
-    }
-
-    //to play a 5 game round
-    function game() {
-        return (playerWin == 3) ? "You won!" 
-                : (computerWin == 3) ? "Computer wins" 
-                : "It's a draw";
-    }
-
-    function showScore() {
-        console.log(`Actual Score: \n player: ${playerWin} vs computer: ${computerWin}`);
-    }
-
-    for (let i = 0; i < 5; i++) {
-        console.log(`Round ${i + 1}`);
-        let userPick = prompt("Pick your choice! Rock, Paper or Scissors!");
-        console.log(playerRound(userPick, computerPlay()));
-    }
-    
-    game();
-
-
-</script>
+</div>
 
 </body>
+<script src="js/script.js"></script>
 
 </html>
