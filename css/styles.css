@@ -11,6 +11,11 @@
     align-content: space-around;
 }
 
+.cpuOptions p {
+    margin: 0 auto;
+    font-size:20px;
+}
+
 .options {
     margin:0 auto;
     width:300px;
